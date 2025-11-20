@@ -2,6 +2,7 @@
   "name": "shadcn-registry-template-tanstack-start",
   "private": true,
   "type": "module",
+  "packageManager": "bun@1.3.2",
   "scripts": {
     "dev": "alchemy dev",
     "test": "vitest run",
