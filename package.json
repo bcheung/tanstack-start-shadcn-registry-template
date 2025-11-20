@@ -3,19 +3,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
-    "serve": "vite preview",
+    "dev": "alchemy dev",
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check --write",
-    "deploy": "wrangler deploy",
+    "deploy": "alchemy deploy",
     "registry:build": "shadcn build",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
-    "@cloudflare/vite-plugin": "^1.13.8",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/vite": "^4.0.6",
@@ -55,6 +52,6 @@
     "vite": "^7.1.7",
     "vitest": "^3.0.5",
     "web-vitals": "^5.1.0",
-    "wrangler": "^4.40.3"
+    "alchemy": "^0.78.0"
   }
 }

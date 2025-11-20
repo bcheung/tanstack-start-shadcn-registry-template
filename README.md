@@ -4,13 +4,22 @@ This project is a working TanStack Start application that embeds the official sh
 
 ## Getting Started
 
-1. Create a `.env` file and set the deployment origin used by the registry:
+1. Create a `.env` file with the values Alchemy expects:
 
    ```bash
+   ALCHEMY_PASSWORD=change-me           # encrypts secrets set via Alchemy
    VITE_BASE_URL=https://your-domain.com
    ```
 
-2. Install dependencies and start the dev server:
+2. Authenticate with Alchemy/Cloudflare so deployments work. Follow the [Alchemy “Getting Started” guide](https://alchemy.run/getting-started/) and run:
+
+   ```bash
+   bun alchemy login
+   # optional, if you manage multiple profiles:
+   bun alchemy configure
+   ```
+
+3. Install dependencies and start the dev server:
 
    ```bash
    bun install
@@ -31,18 +40,18 @@ This runs `shadcn build` and emits files such as `public/r/hello-world.json`, wh
 
 ## Environment Variables
 
-The “Open in v0” button and registry URLs need the fully qualified origin of your deployment. Set `VITE_BASE_URL=https://your-domain.com` (or any other origin) in `.env` **before** running `bun run dev`, `bun run build`, or `bun run deploy`. The app now throws during startup if the variable is missing, so you’ll notice misconfiguration immediately. In CI/CD, export the same variable prior to running builds or `wrangler deploy`.
+The “Open in v0” button and registry URLs need the fully qualified origin of your deployment. Set `VITE_BASE_URL=https://your-domain.com` (or any other origin) in `.env` **before** running `bun run dev`, `bun run build`, or `bun run deploy`. The app throws during startup if the variable is missing, so you’ll notice misconfiguration immediately. For CI/CD, export the same variable before invoking `bun run build` or `bun run deploy`.
 
 ## Scripts
 
 | Script | Description |
 | --- | --- |
-| `bun run dev` | Start the TanStack Start dev server |
-| `bun run build` | Build the SSR bundle |
+| `bun run dev` | Start Alchemy’s TanStack Start dev environment |
+| `bun run build` | Build the SSR bundle (Alchemy-configured Vite) |
 | `bun run registry:build` | Rebuild `public/r/*.json` using `shadcn` |
 | `bun run test` | Run Vitest |
 | `bun run lint` / `format` / `check` | Biome tooling |
-| `bun run deploy` | Deploy via `wrangler` |
+| `bun run deploy` | Deploy via `alchemy deploy` |
 
 ## Project Layout
 
@@ -55,3 +64,4 @@ The “Open in v0” button and registry URLs need the fully qualified origin of
 ## References
 
 - TanStack’s migration notes for moving from Next.js to TanStack Start highlight how routing, server functions, and public assets map to this setup. See the [official guide](https://tanstack.com/start/latest/docs/framework/react/migrate-from-next-js) for deeper context.
+- Alchemy’s Cloudflare deployment guide covers the `alchemy dev` / `alchemy deploy` workflow used here. See [https://alchemy.run/guides/cloudflare-tanstack-start/](https://alchemy.run/guides/cloudflare-tanstack-start/).
