@@ -10,7 +10,7 @@
     "lint": "biome lint",
     "check": "biome check --write",
     "deploy": "alchemy deploy",
-    "registry:build": "shadcn build",
+    "registry:build": "shadcn build && biome check --write",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {

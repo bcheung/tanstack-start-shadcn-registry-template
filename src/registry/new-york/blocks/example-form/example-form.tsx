@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { z } from "zod";
 import { Button } from "@/registry/new-york/ui/button";
